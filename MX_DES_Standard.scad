@@ -21,7 +21,26 @@ keycap(
     crossSection  = false, // center cut to check internal
     homeDot = false, //turn on homedots
     homeRing = false, //turn on homing rings
-    Legends = false
+    Legends = true, 
+    text = "Q",
+    font = "American Typewriter:style=regular",
+    textSize = 5
+);
+
+translate([38, 0, 0]) keycap(
+    keyID  = 1, //change profile refer to KeyParameters Struct
+    cutLen = 0, //Don't change. for chopped caps
+    Stem   = true, //tusn on shell and stems
+    Dish   = true, //turn on dish cut
+    Stab   = 0,
+    visualizeDish = false, // turn on debug visual of Dish
+    crossSection  = false, // center cut to check internal
+    homeDot = false, //turn on homedots
+    homeRing = false, //turn on homing rings
+    Legends = true,
+    text = "W",
+    font = "Copperplate:style=regular",
+    textSize = 9
 );
 
 //#translate([0,38,13])cube([18-5.7, 18-5.7,1],center = true);
@@ -313,6 +332,9 @@ module keycap(
     Stem = false,
     crossSection = true,
     Legends = false,
+    text = "A",
+    font = "Arial:style=regular",
+    textSize = 10,
     homeDot = false,
     homeRing = false,
     Stab = 0
@@ -371,7 +393,7 @@ module keycap(
     //Fonts
     if(Legends ==  true){
 //          #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
-      translate([0,0,KeyHeight(keyID)-5])linear_extrude(height =5)text( text = "A", font = "Calibri:style=Bold", size = 4, valign = "center", halign = "center" );
+      translate([0,0,KeyHeight(keyID)-3])linear_extrude(height =4) text( text = text, font = font, size = textSize, valign = "center", halign = "center" );
       //  #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([0,-3.5,0])linear_extrude(height = 0.5)text( text = "Me", font = "Constantia:style=Bold", size = 3, valign = "center", halign = "center" );
       }
    //Dish Shape

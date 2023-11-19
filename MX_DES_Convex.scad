@@ -20,7 +20,8 @@ mirror([0,0,0])keycap(
     visualizeDish = true, // turn on debug visual of Dish
     crossSection  = false, // center cut to check internal
     homeDot = false, //turn on homedots
-    Legends = false
+    Legends = true,
+    text = "A"
 );
 
 //Parameters
@@ -249,7 +250,7 @@ function StemRadius(t, keyID) = pow(t/stemLayers,3)*3 + (1-pow(t/stemLayers, 3))
 
 
 ///----- KEY Builder Module
-module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false, Dish = true, Stem = false, homeDot = false, Stab = 0) {
+module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false, Dish = true, Stem = false, homeDot = false, Legends = false, text = "A", Stab = 0) {
 
   //Set Parameters for dish shape
   FrontPath = quantize_trajectories(FrontTrajectory(keyID), steps = stepsize, loop=false, start_position= $t*4);
@@ -281,6 +282,13 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false,
         }
     }
 
+    if(Legends ==  true){
+//          #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
+      translate([0,0,KeyHeight(keyID)-3])linear_extrude(height =4) text( text = text, font = "Calibri:style=Bold", size = 4, valign = "center", halign = "center" );
+      //  #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([0,-3.5,0])linear_extrude(height = 0.5)text( text = "Me", font = "Constantia:style=Bold", size = 3, valign = "center", halign = "center" );
+      }
+   //Dish Sh
+   
    //Dish Shape
     if(Dish == true){
      if(visualizeDish == false){
