@@ -21,7 +21,9 @@ mirror([0,0,0])keycap(
     crossSection  = false, // center cut to check internal
     homeDot = false, //turn on homedots
     Legends = true,
-    text = "A"
+    text = "A",
+    font = "American Typewriter:style=regular",
+    textSize = 5
 );
 
 //Parameters
@@ -250,7 +252,7 @@ function StemRadius(t, keyID) = pow(t/stemLayers,3)*3 + (1-pow(t/stemLayers, 3))
 
 
 ///----- KEY Builder Module
-module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false, Dish = true, Stem = false, homeDot = false, Legends = false, text = "A", Stab = 0) {
+module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false, Dish = true, Stem = false, homeDot = false, Legends = false, text = "A", font = "Arial:style=regular", textSize = 4, Stab = 0) {
 
   //Set Parameters for dish shape
   FrontPath = quantize_trajectories(FrontTrajectory(keyID), steps = stepsize, loop=false, start_position= $t*4);
@@ -284,7 +286,7 @@ module keycap(keyID = 0, cutLen = 0, visualizeDish = false, rossSection = false,
 
     if(Legends ==  true){
 //          #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
-      translate([0,0,KeyHeight(keyID)-3])linear_extrude(height =4) text( text = text, font = "Calibri:style=Bold", size = 4, valign = "center", halign = "center" );
+      translate([0,0,KeyHeight(keyID)-3])linear_extrude(height =4) text( text = text, font = font, size = textSize, valign = "center", halign = "center" );
       //  #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([0,-3.5,0])linear_extrude(height = 0.5)text( text = "Me", font = "Constantia:style=Bold", size = 3, valign = "center", halign = "center" );
       }
    //Dish Sh
