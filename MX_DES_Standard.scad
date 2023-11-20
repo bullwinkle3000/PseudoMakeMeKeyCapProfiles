@@ -337,7 +337,8 @@ module keycap(
     textSize = 10,
     homeDot = false,
     homeRing = false,
-    Stab = 0
+    Stab = 0,
+    rotate = [0, 0, 0]
 ) {
 
   //Set Parameters for dish shape
