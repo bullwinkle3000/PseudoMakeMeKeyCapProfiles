@@ -338,7 +338,7 @@ module keycap(
     homeDot = false,
     homeRing = false,
     Stab = 0,
-    rotate = [0, 0, 0]
+    rotateText = 0
 ) {
 
   //Set Parameters for dish shape
@@ -392,9 +392,9 @@ module keycap(
     //Cuts
 
     //Fonts
-    if(Legends ==  true){
+    if(Legends ==  true) {
 //          #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])
-      translate([0,0,KeyHeight(keyID)-3])linear_extrude(height =4) text( text = text, font = font, size = textSize, valign = "center", halign = "center" );
+      rotate([0, 0, rotateText]) translate([0,0,KeyHeight(keyID)-3]) linear_extrude(height =4) text( text = text, font = font, size = textSize, valign = "center", halign = "center" );
       //  #rotate([-XAngleSkew(keyID),YAngleSkew(keyID),ZAngleSkew(keyID)])translate([0,-3.5,0])linear_extrude(height = 0.5)text( text = "Me", font = "Constantia:style=Bold", size = 3, valign = "center", halign = "center" );
       }
    //Dish Shape
