@@ -70,7 +70,7 @@ for (i=[0:len(legends)-1]) {
     text = key[1];
     font = key[3];
     size = key[2];
-    translate([i * 30, 0, 0]) keycap(
+    translate([0, i * 20, 0]) keycap(
         keyID = row,
         Stem = true,
         crossSection = false,
